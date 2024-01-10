@@ -41,7 +41,7 @@ ul {
 
 /* Form Styles */
 
-form {
+#form__step-container {
   width: 100%;
   background-color: var(--form-background);
   border-radius: .75rem;
@@ -56,7 +56,7 @@ form {
 /* Attribution */
 
 .attribution { 
-  font-size: 11px; 
+  font-size: .65rem; 
   text-align: center; 
 }
 
