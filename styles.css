@@ -1,0 +1,65 @@
+/* Global Styles */
+
+:root {
+  --primary-color: hsl(213, 96%, 18%);
+  --form-background: hsl(0, 0%, 100%);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+  background-image: url("/assets/images/bg-sidebar-mobile.svg");
+  background-repeat: no-repeat;
+  background-color: hsl(217, 100%, 97%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  color: var(--primary-color);
+}
+
+p {
+  font-size: 16px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Form Styles */
+
+form {
+  width: 100%;
+  background-color: var(--form-background);
+  border-radius: .75rem;
+}
+
+.form__step {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 1.5em 0;
+}
+
+/* Attribution */
+
+.attribution { 
+  font-size: 11px; 
+  text-align: center; 
+}
+
+.attribution a { 
+  color: hsl(228, 45%, 44%);
+}

@@ -5,19 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Multi-step form</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
 
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  <title>Frontend Mentor | Multi-step form</title>
 </head>
-<body>
+<body class="container">
 
   <!-- Sidebar start -->
 
-  <div id="desktop-sidebar">
+  <div id="mobile-step-counter">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </div>
+
+  <div id="desktop-sidebar" class="hidden">
     <ol>
       <li>
         <div>
@@ -58,7 +66,7 @@
 
   <form id="multi-step-form">
     <!-- Step 1 start -->
-    <div id="form__step-1">
+    <div id="form__step-1" class="form__step">
       <h2>Personal info</h2>
       <p>Please provide your name, email address, and phone number.</p>
       <label>
@@ -73,12 +81,11 @@
         Phone Number
         <input type="tel" placeholder="e.g. +1 234 567 890" required>
       </label>
-      <button type="button">Next Step</button>
     </div>
     <!-- Step 1 end -->
 
     <!-- Step 2 start -->
-    <div id="form__step-2">
+    <div id="form__step-2" class="form__step hidden">
       <h2>Select your plan</h2>
       <p>You have the option of monthly or yearly billing.</p>
       <label>
@@ -101,13 +108,11 @@
           <input type="radio" name="billing" value="yearly"> Yearly
         </label>
       </div>
-      <button type="button">Go Back</button>
-      <button type="button">Next Step</button>
     </div>
     <!-- Step 2 end -->
 
     <!-- Step 3 start -->
-    <div id="form__step-3">
+    <div id="form__step-3" class="form__step hidden">
       <h2>Pick add-ons</h2>
       <p>Add-ons help enhance your gaming experience.</p>
       <label>
@@ -128,24 +133,20 @@
         Custom theme on your profile
         +$2/mo
       </label>
-      <button type="button">Go Back</button>
-      <button type="button">Next Step</button>
     </div>
     <!-- Step 3 end -->
 
     <!-- Step 4 start -->
-    <div id="form__step-4">
+    <div id="form__step-4" class="form__step hidden">
       <h2>Finishing up</h2>
       <p>Double-check everything looks OK before confirming.</p>
       <!-- Dynamically add subscription and add-on selections here -->
       <p>Total (per month/year)</p>
-      <button type="button">Go Back</button>
-      <button type="submit">Confirm</button>
     </div>
     <!-- Step 4 end -->
 
     <!-- Step 5 start -->
-    <div id="form__submission-complete">
+    <div id="form__submission-complete" class="form__step hidden">
       <h2>Thank you!</h2>
       <p>
         Thanks for confirming your subscription! We hope you have fun
@@ -154,13 +155,17 @@
       </p>
     </div>
     <!-- Step 5 end -->
+
+    <div id="form__buttons">
+      <button type="button">Next Step</button>
+    </div>
   </form>
 
-  <footer>
+  <!-- <footer>
     <p class="attribution">
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
       Coded by <a href="https://github.com/Patrick-Dolan">Patrick Dolan</a>.
     </p>
-  </footer>
+  </footer> -->
 </body>
 </html>
