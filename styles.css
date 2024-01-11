@@ -1,8 +1,15 @@
 /* Global Styles */
 
+/* TODO CHANGE PRIMARY AND SECONDARY COLORS FOR BUTTONS */
+
 :root {
   --primary-color: hsl(213, 96%, 18%);
+  --secondary-color: hsl(252, 78%, 60%);
   --form-background: hsl(0, 0%, 100%);
+  --shadow: hsla(213, 96%, 9%, 0.1);
+  --text-light: hsl(0, 0%, 100%);
+  --text-neutral: hsl(231, 11%, 63%);
+  ;
 }
 
 body {
@@ -42,6 +49,7 @@ ul {
 /* Form Styles */
 
 #form__step-container {
+  box-shadow: 0px 35px 50px -15px var(--shadow);
   width: 100%;
   background-color: var(--form-background);
   border-radius: .75rem;
@@ -51,6 +59,54 @@ ul {
   max-width: 90%;
   margin: 0 auto;
   padding: 1.5em 0;
+}
+
+/* Form buttons */
+
+button {
+  border: none;
+  background-color: var(--primary-color);
+  border-radius: .25rem;
+  padding: .75rem 1.5rem;
+  font-size: .85rem;
+  cursor: pointer;
+  font-weight: 500;
+  min-width: 108px;
+}
+
+#form__buttons {
+  box-shadow: 0px 35px 50px -15px var(--shadow);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--form-background);
+}
+
+#next-step-button {
+  margin-left: auto;
+}
+
+.button-primary {
+  color: var(--text-light);
+  background-color: var(--primary-color);
+}
+
+.button-secondary {
+  color: var(--text-light);
+  background-color: var(--secondary-color);
+}
+
+.button-neutral {
+  color: var(--text-neutral);
+  background-color: var(--form-background);
+  font-weight: 700;
+  padding: .5rem 0;
+  min-width: 0;
 }
 
 /* Attribution */
