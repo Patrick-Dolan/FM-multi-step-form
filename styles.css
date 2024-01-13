@@ -4,7 +4,7 @@
 
 :root {
   --primary-color: hsl(213, 96%, 18%);
-  --secondary-color: hsl(252, 78%, 60%);
+  --secondary-color: hsl(243, 100%, 62%);
   --tertiary-color: hsl(206, 94%, 87%);
   --form-background: hsl(0, 0%, 100%);
   --shadow: hsla(213, 96%, 9%, 0.1);
@@ -15,6 +15,7 @@
 
   /* UNUSED COLORS for challenge */
   --purplish-blue: hsl(243, 100%, 62%);
+  --purple: hsl(252, 78%, 60%);
   --pastel-blue: hsl(228, 100%, 84%);
   --magnolia: hsl(217, 100%, 97%);
   --alabaster: hsl(231, 100%, 99%);
@@ -36,6 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   font-size: 16px;
+  line-height: 1.5
 }
 
 ul {
@@ -46,6 +48,17 @@ ul {
 
 label {
   color: var(--primary-color);
+}
+
+button {
+  border: none;
+  background-color: var(--primary-color);
+  border-radius: .25rem;
+  font-size: .85rem;
+  cursor: pointer;
+  font-family: 'Ubuntu', sans-serif;
+  min-width: 7.5em;
+  min-height: 3em;
 }
 
 .container {
@@ -68,14 +81,19 @@ label {
 }
 
 .form__step {
-  max-width: 90%;
+  max-width: 85%;
   margin: 0 auto;
   padding: 1.5em 0;
+}
+
+.form__step-title {
+  margin-top: .45rem;
 }
 
 .form__step-paragraph {
   color: var(--text-neutral);
   font-size: 1.05rem;
+  margin-top: .75em;
 }
 
 /* Form Fields */
@@ -102,7 +120,7 @@ label {
 
 .form__group input::placeholder {
   color: var(--text-neutral);
-  font-weight: 700;
+  font-weight: 500;
   padding: 0 .25em;
 }
 
@@ -118,8 +136,6 @@ label {
   font-weight: 700;
   font-size: .85rem;
 }
-
-
 
 /* Form step indicator */
 
@@ -162,17 +178,6 @@ label {
 
 /* Form buttons */
 
-button {
-  border: none;
-  background-color: var(--primary-color);
-  border-radius: .25rem;
-  padding: .75rem 1.5rem;
-  font-size: .85rem;
-  cursor: pointer;
-  font-weight: 500;
-  min-width: 108px;
-}
-
 #form__buttons {
   box-shadow: 0px 35px 50px -15px var(--shadow);
   position: fixed;
@@ -203,7 +208,7 @@ button {
 .button-neutral {
   color: var(--text-neutral);
   background-color: var(--form-background);
-  font-weight: 700;
+  font-weight: 500;
   padding: .5rem 0;
   min-width: 0;
 }
