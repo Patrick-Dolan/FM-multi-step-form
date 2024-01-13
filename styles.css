@@ -5,11 +5,19 @@
 :root {
   --primary-color: hsl(213, 96%, 18%);
   --secondary-color: hsl(252, 78%, 60%);
+  --tertiary-color: hsl(206, 94%, 87%);
   --form-background: hsl(0, 0%, 100%);
   --shadow: hsla(213, 96%, 9%, 0.1);
+  --light-border: hsl(229, 24%, 87%);
   --text-light: hsl(0, 0%, 100%);
   --text-neutral: hsl(231, 11%, 63%);
-  ;
+  --error-color: hsl(354, 84%, 57%);
+
+  /* UNUSED COLORS for challenge */
+  --purplish-blue: hsl(243, 100%, 62%);
+  --pastel-blue: hsl(228, 100%, 84%);
+  --magnolia: hsl(217, 100%, 97%);
+  --alabaster: hsl(231, 100%, 99%);
 }
 
 body {
@@ -36,6 +44,10 @@ ul {
   margin: 0;
 }
 
+label {
+  color: var(--primary-color);
+}
+
 .container {
   width: 100%;
   max-width: 90%;
@@ -59,6 +71,93 @@ ul {
   max-width: 90%;
   margin: 0 auto;
   padding: 1.5em 0;
+}
+
+.form__step-paragraph {
+  color: var(--text-neutral);
+  font-size: 1.05rem;
+}
+
+/* Form Fields */
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: .25em;
+  margin-bottom: .5em;
+}
+
+.form__group input {
+  border: 1px solid var(--light-border);
+  color: var(--primary-color);
+  border-radius: .25rem;
+  padding: .75rem .75rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.form__group label {
+  font-size: .85rem;
+}
+
+.form__group input::placeholder {
+  color: var(--text-neutral);
+  font-weight: 700;
+  padding: 0 .25em;
+}
+
+.form__label-error-group {
+  display: flex;
+  justify-content: space-between;
+  margin: .5em 0 0 0;
+}
+
+.form__error-message {
+  color: var(--error-color);
+  margin: 0;
+  font-weight: 700;
+  font-size: .85rem;
+}
+
+
+
+/* Form step indicator */
+
+#mobile-step-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em 0 2em 0;
+  gap: .85em;
+}
+
+#desktop-step-indicator li {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 2em;
+}
+
+#desktop-step-indicator p {
+  margin: 0;
+}
+
+.step-indicator__number {
+  width: 2em;
+  height: 2em;
+  border: 1px solid var(--text-light);
+  border-radius: 50%;
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  margin: 0;
+}
+
+.step-indicator__active {
+  background-color: var(--tertiary-color);
+  border-color: var(--tertiary-color);
+  color: var(--primary-color);
 }
 
 /* Form buttons */
