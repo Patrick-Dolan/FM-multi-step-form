@@ -89,7 +89,7 @@
         </div>
       </div>
       <!-- Step 2 -->
-      <div id="form__step-2" class="form__step">
+      <div id="form__step-2" class="form__step hidden">
         <h2 class="form__step-title">Select your plan</h2>
         <p class="form__step-paragraph">You have the option of monthly or yearly billing.</p>
         <input id="plan1" class="form__plan-input" type="radio" name="plan" value="arcade" checked> 
@@ -126,26 +126,47 @@
         </label>
       </div>
       <!-- Step 3 -->
-      <div id="form__step-3" class="form__step hidden">
+      <div id="form__step-3" class="form__step">
         <h2 class="form__step-title">Pick add-ons</h2>
         <p class="form__step-paragraph">Add-ons help enhance your gaming experience.</p>
-        <label>
-          <input type="checkbox" name="addons" value="online-service">
-          Online service
-          Access to multiplayer games
-          +$1/mo
+        <label for="online-service" class="form__addon-card">
+          <input id="online-service" type="checkbox" class="form__addon-input hidden" name="addons" value="online-service">
+          <div class="checkbox">
+            <img src="./assets/images/icon-checkmark.svg" alt="">
+          </div>
+          <div class="form__addon-card--row">
+            <div>
+              <p class="form__addon-card--title">Online service</p>
+              <p class="form__addon-card--details">Access to multiplayer games</p>
+            </div>
+            <p class="form__addon-card--price">+$1/mo</p>
+          </div>
         </label>
-        <label>
-          <input type="checkbox" name="addons" value="larger-storage">
-          Larger storage
-          Extra 1TB of cloud save
-          +$2/mo
+        <label for="larger-storage" class="form__addon-card">
+          <input id="larger-storage" type="checkbox" class="form__addon-input hidden" name="addons" value="larger-storage">
+          <div class="checkbox">
+            <img src="./assets/images/icon-checkmark.svg" alt="">
+          </div>
+          <div class="form__addon-card--row">
+            <div>
+              <p class="form__addon-card--title">Larger storage</p>
+              <p class="form__addon-card--details">Extra 1TB of cloud save</p>
+            </div>
+            <p class="form__addon-card--price">+$2/mo</p>
+          </div>
         </label>
-        <label>
-          <input type="checkbox" name="addons" value="customizable-profile">
-          Customizable Profile
-          Custom theme on your profile
-          +$2/mo
+        <label for="customizable-profile" class="form__addon-card">
+          <input id="customizable-profile" type="checkbox" class="form__addon-input hidden" name="addons" value="customizable-profile">
+          <div class="checkbox">
+            <img src="./assets/images/icon-checkmark.svg" alt="">
+          </div>
+          <div class="form__addon-card--row">
+            <div>
+              <p class="form__addon-card--title">Customizable Profile</p>
+              <p class="form__addon-card--details">Custom theme on your profile</p>
+            </div>
+            <p class="form__addon-card--price">+$2/mo</p>
+          </div>
         </label>
       </div>
       <!-- Step 4 -->

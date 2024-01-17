@@ -165,6 +165,15 @@ function createBillingFrequencyHandler() {
   }
 }
 
+function handleAddonStyleEventListeners() {
+  const addons = document.querySelectorAll(".form__addon-input");
+  addons.forEach(addon => {
+    addon.addEventListener("change", () => {
+      const label = document.querySelector(`label[for="${addon.id}"]`);
+      label.classList.toggle("active-addon", addon.checked);
+    });
+  })
+}
 
 // TODO add event listener that stops form submission on enter key press unless on last step
 
@@ -173,6 +182,7 @@ window.addEventListener("load", function() {
   const stepHandler = createStepHandler();
   const billingFrequencyHandler = createBillingFrequencyHandler();
 
+  handleAddonStyleEventListeners();
   document.getElementById("multi-step-form").addEventListener("submit", handleFormSubmit);
   document.getElementById("next-step-button").addEventListener("click", () => stepHandler.handleStepChange(1));
   document.getElementById("previous-step-button").addEventListener("click", () => stepHandler.handleStepChange(-1));

@@ -11,12 +11,12 @@
   --text-light: hsl(0, 0%, 100%);
   --text-neutral: hsl(231, 11%, 63%);
   --error-color: hsl(354, 84%, 57%);
+  --magnolia: hsl(217, 100%, 97%);
 
   /* UNUSED COLORS for challenge */
   --purplish-blue: hsl(243, 100%, 62%);
   --purple: hsl(252, 78%, 60%);
   --pastel-blue: hsl(228, 100%, 84%);
-  --magnolia: hsl(217, 100%, 97%);
   --alabaster: hsl(231, 100%, 99%);
 }
 
@@ -213,7 +213,7 @@ button {
 }
 
 .form__plan-input:checked + label {
-  background-color: hsl(217, 100%, 97%);
+  background-color: var(--magnolia);
   border: 1px solid var(--primary-color);
 }
 
@@ -260,6 +260,68 @@ button {
 
 .form__plan-toggle--active {
   color: var(--primary-color);
+}
+
+/* Form add-ons */
+.form__addon-card {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  border: 1px solid var(--light-border);
+  border-radius: .5rem;
+  padding: .75em .75em;
+  margin-bottom: .65em;
+}
+
+.form__addon-card:last-child {
+  margin-bottom: 0;
+}
+
+.checkbox {
+  width: 1.25em;
+  height: 1.25em;
+  border: 1px solid var(--light-border);
+  border-radius: .25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form__addon-input:checked + .checkbox {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.form__addon-card--row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.form__addon-card--row p {
+  margin: 0;
+}
+
+.form__addon-card--title {
+  color: var(--primary-color);
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.form__addon-card--details {
+  color: var(--text-neutral);
+  font-size: .8rem;
+}
+
+.form__addon-card--price {
+  color: var(--secondary-color);
+  font-size: .8rem;
+}
+
+.active-addon {
+  background-color: var(--magnolia);
+  border: 1px solid var(--secondary-color);
 }
 
 /* Form buttons */
