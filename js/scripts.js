@@ -1,17 +1,40 @@
 // Business Logic
+class Plans {
+  constructor() {
+    this.arcade = {
+      monthly: 9,
+      yearly: 90
+    };
+    this.advanced = {
+      monthly: 12,
+      yearly: 120
+    };
+    this.pro = {
+      monthly: 15,
+      yearly: 150
+    };
+  }
+}
+
 function handleFormSubmit(event) {
   event.preventDefault();
 
   const form = event.target;
   const formData = new FormData(form);
 
-  const formDataObject = {addons: []};
+  const formDataObject = {
+    addons: [],
+    billingFrequency: "monthly",
+  };
+
   for (let pair of formData.entries()) {
     const key = pair[0];
     const value = pair[1];
 
     if (formDataObject[key]) {
-      if (Array.isArray(formDataObject[key])) {
+      if (key === "billingFrequency") {
+        formDataObject[key] = value;
+      } else if (Array.isArray(formDataObject[key])) {
         formDataObject[key].push(value);
       } else {
         formDataObject[key] = [formDataObject[key], value];
@@ -120,12 +143,38 @@ function createStepHandler() {
   };
 };
 
+function createBillingFrequencyHandler() {
+  const toggleLabels = Array.from(document.querySelectorAll(".toggle-labels"));
+  const freeMonthLabels = Array.from(document.querySelectorAll(".form__plan-card--free-months"));
+  const arcadePriceLabel = document.getElementById("arcade-price");
+  const advancedPriceLabel = document.getElementById("advanced-price");
+  const proPriceLabel = document.getElementById("pro-price");
+  const plans = new Plans();
+
+  return function toggleBillingFrequencyChange() {
+    let billingFrequency = document.getElementById("form__plan-toggle").checked ? "yearly" : "monthly";
+
+    // Toggle active class on toggle labels and show 
+    toggleLabels.forEach(label => label.classList.toggle("form__plan-toggle--active"));
+    freeMonthLabels.forEach(label => label.classList.toggle("hidden"));
+
+    // Update billing frequency plan values
+    arcadePriceLabel.innerHTML = billingFrequency === "monthly" ? `$${plans.arcade.monthly}/mo` : `$${plans.arcade.yearly}/yr`;
+    advancedPriceLabel.innerHTML = billingFrequency === "monthly" ? `$${plans.advanced.monthly}/mo` : `$${plans.advanced.yearly}/yr`;
+    proPriceLabel.innerHTML = billingFrequency === "monthly" ? `$${plans.pro.monthly}/mo` : `$${plans.pro.yearly}/yr`;
+  }
+}
+
+
 // TODO add event listener that stops form submission on enter key press unless on last step
 
 // Wait till load to execute all code
 window.addEventListener("load", function() {
   const stepHandler = createStepHandler();
+  const billingFrequencyHandler = createBillingFrequencyHandler();
+
   document.getElementById("multi-step-form").addEventListener("submit", handleFormSubmit);
   document.getElementById("next-step-button").addEventListener("click", () => stepHandler.handleStepChange(1));
   document.getElementById("previous-step-button").addEventListener("click", () => stepHandler.handleStepChange(-1));
+  document.getElementById("form__plan-toggle").addEventListener("change", billingFrequencyHandler);
 });

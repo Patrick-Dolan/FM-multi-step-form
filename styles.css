@@ -1,13 +1,12 @@
 /* Global Styles */
 
-/* TODO CHANGE PRIMARY AND SECONDARY COLORS FOR BUTTONS */
-
 :root {
   --primary-color: hsl(213, 96%, 18%);
   --secondary-color: hsl(243, 100%, 62%);
   --tertiary-color: hsl(206, 94%, 87%);
   --form-background: hsl(0, 0%, 100%);
   --shadow: hsla(213, 96%, 9%, 0.1);
+  --dark-shadow: hsla(213, 96%, 9%, 0.4);
   --light-border: hsl(229, 24%, 87%);
   --text-light: hsl(0, 0%, 100%);
   --text-neutral: hsl(231, 11%, 63%);
@@ -28,6 +27,8 @@ body {
   background-image: url("/assets/images/bg-sidebar-mobile.svg");
   background-repeat: no-repeat;
   background-color: hsl(217, 100%, 97%);
+  /* PADDING BOTTOM IS FOR MOBILE SO BUTTONS DON'T LET CONTENT HIDE BEHIND THEM */
+  padding-bottom: 6em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -176,10 +177,94 @@ button {
   color: var(--primary-color);
 }
 
-/* Form buttons */
+/* Form plan styles */
 
+.form__plan-card {
+  display: flex;
+  align-items: start;
+  gap: 1em;
+  border: 1px solid var(--light-border);
+  border-radius: .5rem;
+  padding: 1em 1em;
+  margin-bottom: .5em;
+}
+
+.form__plan-card p {
+  margin: 0;
+}
+
+.form__plan-card--title {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.form__plan-card--price {
+  color: var(--text-neutral);
+  font-size: .85rem;
+}
+
+.form__plan-card--free-months {
+  color: var(--primary-color);
+  font-size: .8rem;
+}
+
+.form__plan-input {
+  display: none;
+}
+
+.form__plan-input:checked + label {
+  background-color: hsl(217, 100%, 97%);
+  border: 1px solid var(--primary-color);
+}
+
+#form__plan-toggle-label {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  align-items: center;
+  font-weight: 700;
+  margin: 1.5em 0 .5em 0;
+  color: var(--text-neutral);
+}
+
+#form__plan-toggle {
+  position: relative;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 35px;
+  height: 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  background-color: var(--primary-color);
+}
+
+#form__plan-toggle:checked {
+  padding-left: 15px;
+}
+
+#form__plan-toggle:before {
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  margin: 3px;
+  background-color: var(--form-background);
+  border-radius: 50%;
+}
+
+#form__plan-toggle:before, 
+#form__plan-toggle:after {
+  content: "";
+  display: block;
+}
+
+.form__plan-toggle--active {
+  color: var(--primary-color);
+}
+
+/* Form buttons */
 #form__buttons {
-  box-shadow: 0px 35px 50px -15px var(--shadow);
+  box-shadow: 0px 10px 50px -20px var(--dark-shadow);
   position: fixed;
   bottom: 0;
   left: 0;

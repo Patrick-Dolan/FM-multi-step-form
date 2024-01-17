@@ -62,7 +62,7 @@
   <form id="multi-step-form">
     <div id="form__step-container">
       <!-- Step 1 start -->
-      <div id="form__step-1" class="form__step">
+      <div id="form__step-1" class="form__step hidden">
         <h2 class="form__step-title">Personal info</h2>
         <p class="form__step-paragraph">Please provide your name, email address, and phone number.</p>
         <div class="form__group">
@@ -70,14 +70,14 @@
             <label for="name">Name</label>
             <p class="form__error-message"></p>
           </div>
-          <input type="text" id="name" name="name" placeholder="e.g. Stephen King" required>
+          <input type="text" id="name" name="name" placeholder="e.g. Stephen King" value="Vanessa Mint" required>
         </div>
         <div class="form__group">
           <div class="form__label-error-group">
             <label for="email">Email Address</label>
             <p class="form__error-message"></p>
           </div>
-          <input type="email" id="email" name="email" placeholder="e.g. stephenking@lorem.com" required>
+          <input type="email" id="email" name="email" placeholder="e.g. stephenking@lorem.com" value="vanessamint@test.com" required>
         </div>
         <div class="form__group">
           <div class="form__label-error-group">
@@ -85,33 +85,45 @@
             <p class="form__error-message"></p>
           </div>
           <!-- Phone number input isn't actually validated -->
-          <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="e.g. +1 234 567 890" required>
+          <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="e.g. +1 234 567 890" value="13605551111" required>
         </div>
       </div>
       <!-- Step 2 -->
-      <div id="form__step-2" class="form__step hidden">
+      <div id="form__step-2" class="form__step">
         <h2 class="form__step-title">Select your plan</h2>
         <p class="form__step-paragraph">You have the option of monthly or yearly billing.</p>
-        <label>
-          <input type="radio" name="plan" value="arcade" checked> Arcade
-          $9/mo
+        <input id="plan1" class="form__plan-input" type="radio" name="plan" value="arcade" checked> 
+        <label for="plan1" class="form__plan-card">
+          <img src="./assets/images/icon-arcade.svg" alt="arcade icon">
+          <div>
+            <p class="form__plan-card--title">Arcade</p>
+            <p id="arcade-price" class="form__plan-card--price">$9/mo</p>
+            <p class="form__plan-card--free-months hidden">2 months free</p>
+          </div>
         </label>
-        <label>
-          <input type="radio" name="plan" value="advanced"> Advanced
-          $12/mo
+        <input id="plan2" class="form__plan-input" type="radio" name="plan" value="advanced"> 
+        <label for="plan2" class="form__plan-card">
+          <img src="./assets/images/icon-advanced.svg" alt="arcade icon">
+          <div>
+            <p class="form__plan-card--title">Advanced</p>
+            <p id="advanced-price" class="form__plan-card--price">$12/mo</p>
+            <p class="form__plan-card--free-months hidden">2 months free</p>
+          </div>
         </label>
-        <label>
-          <input type="radio" name="plan" value="pro"> Pro
-          $15/mo
+        <input id="plan3" class="form__plan-input" type="radio" name="plan" value="pro"> 
+        <label for="plan3" class="form__plan-card">
+          <img src="./assets/images/icon-pro.svg" alt="arcade icon">
+          <div>
+            <p class="form__plan-card--title">Pro</p>
+            <p id="pro-price" class="form__plan-card--price">$15/mo</p>
+            <p class="form__plan-card--free-months hidden">2 months free</p>
+          </div>
         </label>
-        <div class="toggle">
-          <label>
-            <input type="radio" name="billing" value="monthly" checked> Monthly
-          </label>
-          <label>
-            <input type="radio" name="billing" value="yearly"> Yearly
-          </label>
-        </div>
+        <label id="form__plan-toggle-label" for="form__plan-toggle">
+          <span id="monthly-plan" class="toggle-labels form__plan-toggle--active">Monthly</span>
+          <input id="form__plan-toggle" name="billingFrequency" type="checkbox" value="yearly">
+          <span id="yearly-plan" class="toggle-labels">Yearly</span>
+        </label>
       </div>
       <!-- Step 3 -->
       <div id="form__step-3" class="form__step hidden">
@@ -155,6 +167,7 @@
     </div>
 
     <!-- Form step and submit buttons -->
+    <!-- TODO make it so form buttons cant cover content on mobile devices if it gets too long. -->
     <div id="form__buttons">
       <button id="previous-step-button" type="button" class="button-neutral hidden">Go Back</button>
       <button id="next-step-button" type="button" class="button-primary">Next Step</button>
