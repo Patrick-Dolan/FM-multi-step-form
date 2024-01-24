@@ -16,6 +16,32 @@ class Plans {
   }
 }
 
+class Addon {
+  constructor(addonName) {
+    switch (addonName) {
+      case "Online service":
+        this.name = "Online service";
+        this.monthly = 1;
+        this.yearly = 10;
+        break;
+      case "Larger storage":
+        this.name = "Larger storage";
+        this.monthly = 2;
+        this.yearly = 20;
+        break;
+      case "Customizable profile":
+        this.name = "Customizable profile";
+        this.monthly = 2;
+        this.yearly = 20;
+        break;
+      default:
+        this.name = "Error";
+        this.monthly = 0;
+        this.yearly = 0;
+    }
+  }
+}
+
 function handleFormSubmit(event) {
   event.preventDefault();
 
@@ -53,10 +79,82 @@ function handleFormSubmit(event) {
 function createStepHandler() {
   let currentStep = 0;
   const steps = Array.from(document.querySelectorAll(".form__step"));
+  const plans = new Plans();
+  // Buttons
   const nextButton = document.getElementById("next-step-button");
   const backButton = document.getElementById("previous-step-button");
   const submitButton = document.getElementById("submit-button");
+  // Other UI elements
   const mobileStepCounterItems = Array.from(document.querySelectorAll(".step-indicator__number"));
+  const formAddonList = document.getElementById("form__addon--list");
+  const totalCostLabelElement = document.getElementById("form__total-label");
+  const totalCostPriceElement = document.getElementById("form__total-price");
+  const formTotalPlanLabel = document.getElementById("form__total-plan--label");
+  const formTotalPlanCost = document.getElementById("form__total-plan--cost");
+
+  function createAddonFormRow(addon, billingFrequency) {
+    // Create elements
+    const div = document.createElement("div");
+    const p1 = document.createElement("p");
+    const p2 = document.createElement("p");
+
+    // Set classes and text
+    div.className = "form__total-addon--row";
+    p1.textContent = addon.name;
+    p2.className = "form__total-addon--price";
+    p2.textContent = billingFrequency === "monthly" ? `+$${addon.monthly}/mo` : `+$${addon.yearly}/yr`;
+
+    // Append p elements to div
+    div.appendChild(p1);
+    div.appendChild(p2);
+
+    return div;
+  }
+
+  function handleSummaryStep() {
+    // Set formAddonList to be empty before generating new addon list
+    formAddonList.innerHTML = "";
+
+    // Get billing frequency, selected plan, and selected addons
+    let billingFrequency = document.getElementById("form__plan-toggle").checked ? "yearly" : "monthly";
+    const isMonthly = billingFrequency === "monthly";
+    const selectedAddonElements = document.querySelectorAll(".form__addon-input:checked");
+    if (selectedAddonElements.length > 0) {
+      const hrElement = document.createElement("hr");
+      formAddonList.appendChild(hrElement);
+    }
+    const selectedPlan = document.querySelector(".form__plan-input:checked").value;
+
+    // Create new addon list and total cost
+    let totalCost = 0;
+    selectedAddonElements.forEach(addonElement => {
+      const newAddon = new Addon(addonElement.value);
+      totalCost += isMonthly ? newAddon.monthly : newAddon.yearly;
+      const addonRow = createAddonFormRow(newAddon, billingFrequency);
+      formAddonList.appendChild(addonRow);
+    });
+
+    // Update total cost
+    totalCost += isMonthly ? plans[selectedPlan].monthly : plans[selectedPlan].yearly;
+    totalCostLabelElement.innerHTML = isMonthly ? "Total (per month)" : "Total (per year)";
+    totalCostPriceElement.innerHTML = isMonthly ? `$${totalCost}/mo` : `$${totalCost}/yr`;
+    switch (selectedPlan) {
+      case "arcade":
+        formTotalPlanLabel.innerHTML = isMonthly ? "Arcade (Monthly)" : "Arcade (Yearly)";
+        formTotalPlanCost.innerHTML = isMonthly ? `$${plans.arcade.monthly}/mo` : `$${plans.arcade.yearly}/yr`;
+        break;
+      case "advanced":
+        formTotalPlanLabel.innerHTML = isMonthly ? "Advanced (Monthly)" : "Advanced (Yearly)";
+        formTotalPlanCost.innerHTML = isMonthly ? `$${plans.advanced.monthly}/mo` : `$${plans.advanced.yearly}/yr`;
+        break;
+      case "pro":
+        formTotalPlanLabel.innerHTML = isMonthly ? "Pro (Monthly)" : "Pro (Yearly)";
+        formTotalPlanCost.innerHTML = isMonthly ? `$${plans.pro.monthly}/mo` : `$${plans.pro.yearly}/yr`;
+        break;
+      default:
+        formTotalPlanLabel.innerHTML = "Error";
+    }
+  }
 
   function updateFormUI() {
     // Hide all steps
@@ -77,6 +175,11 @@ function createStepHandler() {
     // Update mobile step counter
     mobileStepCounterItems.forEach(item => item.classList.remove("step-indicator__active"));
     mobileStepCounterItems.forEach(item => parseInt(item.innerHTML) === currentStep + 1 ? item.classList.add("step-indicator__active") : null);
+
+    // if on summary step update summary page UI with data from form
+    if (currentStep === 3) {
+      handleSummaryStep();
+    }
   }
 
   function getErrorMessage(input) {
@@ -139,7 +242,11 @@ function createStepHandler() {
       currentStep = Math.max(0, Math.min(steps.length - 1, currentStep));
       updateFormUI();
     },
-    getCurrentStep: () => currentStep
+    getCurrentStep: () => currentStep,
+    jumpToStep: (stepNumber) => {
+      currentStep = stepNumber;
+      updateFormUI();
+    }
   };
 };
 
@@ -149,19 +256,26 @@ function createBillingFrequencyHandler() {
   const arcadePriceLabel = document.getElementById("arcade-price");
   const advancedPriceLabel = document.getElementById("advanced-price");
   const proPriceLabel = document.getElementById("pro-price");
+  const onlineServicePrice = document.querySelector('label[for="online-service"] .form__addon-card--price');
+  const largerStoragePrice = document.querySelector('label[for="larger-storage"] .form__addon-card--price');
+  const customizableProfilePrice = document.querySelector('label[for="customizable-profile"] .form__addon-card--price');
   const plans = new Plans();
 
   return function toggleBillingFrequencyChange() {
     let billingFrequency = document.getElementById("form__plan-toggle").checked ? "yearly" : "monthly";
+    const isMonthly = billingFrequency === "monthly";
 
     // Toggle active class on toggle labels and show 
     toggleLabels.forEach(label => label.classList.toggle("form__plan-toggle--active"));
     freeMonthLabels.forEach(label => label.classList.toggle("hidden"));
 
-    // Update billing frequency plan values
-    arcadePriceLabel.innerHTML = billingFrequency === "monthly" ? `$${plans.arcade.monthly}/mo` : `$${plans.arcade.yearly}/yr`;
-    advancedPriceLabel.innerHTML = billingFrequency === "monthly" ? `$${plans.advanced.monthly}/mo` : `$${plans.advanced.yearly}/yr`;
-    proPriceLabel.innerHTML = billingFrequency === "monthly" ? `$${plans.pro.monthly}/mo` : `$${plans.pro.yearly}/yr`;
+    // Update billing frequency plan values for each plan and update addons
+    arcadePriceLabel.innerHTML = isMonthly ? `$${plans.arcade.monthly}/mo` : `$${plans.arcade.yearly}/yr`;
+    advancedPriceLabel.innerHTML = isMonthly ? `$${plans.advanced.monthly}/mo` : `$${plans.advanced.yearly}/yr`;
+    proPriceLabel.innerHTML = isMonthly ? `$${plans.pro.monthly}/mo` : `$${plans.pro.yearly}/yr`;
+    onlineServicePrice.innerHTML = isMonthly ? `+$1/mo` : `+$10/yr`;
+    largerStoragePrice.innerHTML = isMonthly ? `+$2/mo` : `+$20/yr`;
+    customizableProfilePrice.innerHTML = isMonthly ? `+$2/mo` : `+$20/yr`;
   }
 }
 
@@ -187,4 +301,5 @@ window.addEventListener("load", function() {
   document.getElementById("next-step-button").addEventListener("click", () => stepHandler.handleStepChange(1));
   document.getElementById("previous-step-button").addEventListener("click", () => stepHandler.handleStepChange(-1));
   document.getElementById("form__plan-toggle").addEventListener("change", billingFrequencyHandler);
+  document.getElementById("form__total-plan--button").addEventListener("click", () => stepHandler.jumpToStep(1));
 });

@@ -126,11 +126,11 @@
         </label>
       </div>
       <!-- Step 3 -->
-      <div id="form__step-3" class="form__step">
+      <div id="form__step-3" class="form__step hidden">
         <h2 class="form__step-title">Pick add-ons</h2>
         <p class="form__step-paragraph">Add-ons help enhance your gaming experience.</p>
         <label for="online-service" class="form__addon-card">
-          <input id="online-service" type="checkbox" class="form__addon-input hidden" name="addons" value="online-service">
+          <input id="online-service" type="checkbox" class="form__addon-input hidden" name="addons" value="Online service">
           <div class="checkbox">
             <img src="./assets/images/icon-checkmark.svg" alt="">
           </div>
@@ -143,7 +143,7 @@
           </div>
         </label>
         <label for="larger-storage" class="form__addon-card">
-          <input id="larger-storage" type="checkbox" class="form__addon-input hidden" name="addons" value="larger-storage">
+          <input id="larger-storage" type="checkbox" class="form__addon-input hidden" name="addons" value="Larger storage">
           <div class="checkbox">
             <img src="./assets/images/icon-checkmark.svg" alt="">
           </div>
@@ -156,7 +156,7 @@
           </div>
         </label>
         <label for="customizable-profile" class="form__addon-card">
-          <input id="customizable-profile" type="checkbox" class="form__addon-input hidden" name="addons" value="customizable-profile">
+          <input id="customizable-profile" type="checkbox" class="form__addon-input hidden" name="addons" value="Customizable profile">
           <div class="checkbox">
             <img src="./assets/images/icon-checkmark.svg" alt="">
           </div>
@@ -174,10 +174,26 @@
         <h2 class="form__step-title">Finishing up</h2>
         <p class="form__step-paragraph">Double-check everything looks OK before confirming.</p>
         <!-- Dynamically add subscription and add-on selections here -->
-        <p class="form__step-paragraph">Total (per month/year)</p>
+        <div id="form__total-card">
+          <div class="form__total-plan">
+            <div>
+              <p id="form__total-plan--label">Arcade (Monthly)</p>
+              <button id="form__total-plan--button" type="button">Change</button>
+            </div>
+            <p id="form__total-plan--cost">$9/mo</p>
+          </div>
+          <div id="form__addon--list">
+          </div>
+        </div>
+        <div id="form__total--row">
+          <p id="form__total-label">Total (per month)</p>
+          <p id="form__total-price">$9/mo</p>
+        </div>
       </div>
       <!-- Form submission complete display -->
-      <div id="form__submission-complete" class="hidden">
+      <div id="form__submission-complete" class="form__step ">
+        <!-- TODO add styles for img -->
+        <img src="./assets/images/icon-thank-you.svg" alt="Thank you icon">
         <h2 class="form__step-title">Thank you!</h2>
         <p class="form__step-paragraph">
           Thanks for confirming your subscription! We hope you have fun

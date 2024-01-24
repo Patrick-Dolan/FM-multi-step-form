@@ -62,6 +62,11 @@ button {
   min-height: 3em;
 }
 
+hr {
+  color: var(--text-light);
+  opacity: .25;
+}
+
 .container {
   width: 100%;
   max-width: 90%;
@@ -95,6 +100,14 @@ button {
   color: var(--text-neutral);
   font-size: 1.05rem;
   margin-top: .75em;
+}
+
+#form__submission-complete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 /* Form Fields */
@@ -322,6 +335,82 @@ button {
 .active-addon {
   background-color: var(--magnolia);
   border: 1px solid var(--secondary-color);
+}
+
+/* Form total card */
+#form__total-card {
+  border-radius: .5rem;
+  padding: 1em 1em;
+  background-color: var(--magnolia);
+}
+
+.form__total-plan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .5em;
+}
+
+.form__total-plan p {
+  margin: 0;
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: .9rem;
+}
+
+#form__total-plan--button {
+  background-color: var(--magnolia);
+  padding: 0;
+  border-radius: .25rem;
+  color: var(--text-neutral);
+  font-weight: 500;
+  font-size: .9rem;
+  min-width: 0;
+  min-height: 0;
+  text-decoration: underline;
+  margin-bottom: .25em;
+}
+
+.form__total-addon--row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .5em;
+}
+
+.form__total-addon--row p {
+  margin: 0;
+  color: var(--text-neutral);
+  font-size: .85rem;
+  font-weight: 500;
+}
+
+#form__total--row {
+  color: var(--text-neutral);
+  font-size: .8rem;
+  font-weight: 500;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form__total-addon--row .form__total-addon--price {
+  color: var(--primary-color);
+}
+
+.form__total-addon--row .form__total-label {
+  font-size: .8rem;
+}
+
+#form__total-label {
+  font-size: .85rem;
+}
+
+#form__total-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--secondary-color);
 }
 
 /* Form buttons */
