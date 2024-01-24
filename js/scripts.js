@@ -91,6 +91,7 @@ function createStepHandler() {
   const totalCostPriceElement = document.getElementById("form__total-price");
   const formTotalPlanLabel = document.getElementById("form__total-plan--label");
   const formTotalPlanCost = document.getElementById("form__total-plan--cost");
+  const formButtons = document.getElementById("form__buttons");
 
   function createAddonFormRow(addon, billingFrequency) {
     // Create elements
@@ -176,9 +177,16 @@ function createStepHandler() {
     mobileStepCounterItems.forEach(item => item.classList.remove("step-indicator__active"));
     mobileStepCounterItems.forEach(item => parseInt(item.innerHTML) === currentStep + 1 ? item.classList.add("step-indicator__active") : null);
 
-    // if on summary step update summary page UI with data from form
+    // If on summary step update summary page UI with data from form
     if (currentStep === 3) {
       handleSummaryStep();
+    }
+
+    // Handle final form submission page
+    if (currentStep === 4) {
+      console.log("Form submitted")
+      mobileStepCounterItems.forEach(item => parseInt(item.innerHTML) === currentStep ? item.classList.add("step-indicator__active") : null);
+      formButtons.style.display = "none";
     }
   }
 

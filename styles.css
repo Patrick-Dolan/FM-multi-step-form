@@ -108,6 +108,7 @@ hr {
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 3em 0;
 }
 
 /* Form Fields */
@@ -447,6 +448,14 @@ hr {
   font-weight: 500;
   padding: .5rem 0;
   min-width: 0;
+}
+
+/* Icons */
+
+#thank-you-icon {
+  width: 100%;
+  max-width: 3em;
+  margin-bottom: 1em;
 }
 
 /* Attribution */

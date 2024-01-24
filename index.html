@@ -62,7 +62,7 @@
   <form id="multi-step-form">
     <div id="form__step-container">
       <!-- Step 1 start -->
-      <div id="form__step-1" class="form__step hidden">
+      <div id="form__step-1" class="form__step">
         <h2 class="form__step-title">Personal info</h2>
         <p class="form__step-paragraph">Please provide your name, email address, and phone number.</p>
         <div class="form__group">
@@ -191,15 +191,16 @@
         </div>
       </div>
       <!-- Form submission complete display -->
-      <div id="form__submission-complete" class="form__step ">
-        <!-- TODO add styles for img -->
-        <img src="./assets/images/icon-thank-you.svg" alt="Thank you icon">
-        <h2 class="form__step-title">Thank you!</h2>
-        <p class="form__step-paragraph">
-          Thanks for confirming your subscription! We hope you have fun
-          using our platform. If you ever need support, please feel free
-          to email us at support@loremgaming.com.
-        </p>
+      <div class="form__step hidden">
+        <div id="form__submission-complete">
+          <img src="./assets/images/icon-thank-you.svg" alt="Thank you icon" id="thank-you-icon">
+          <h2 class="form__step-title">Thank you!</h2>
+          <p class="form__step-paragraph mb-3">
+            Thanks for confirming your subscription! We hope you have fun
+            using our platform. If you ever need support, please feel free
+            to email us at support@loremgaming.com.
+          </p>
+        </div>
       </div>
     </div>
 
