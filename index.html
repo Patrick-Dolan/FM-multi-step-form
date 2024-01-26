@@ -15,8 +15,7 @@
 </head>
 <body class="container">
 
-  <!-- Sidebar start -->
-
+  <!-- Mobile Sidebar start -->
   <ul id="mobile-step-indicator">
     <li><p class="step-indicator__number step-indicator__active">1</p></li>
     <li><p class="step-indicator__number">2</p></li>
@@ -24,43 +23,41 @@
     <li><p class="step-indicator__number">4</p></li>
   </ul>
 
-  <div id="desktop-step-indicator" class="hidden">
-    <ul>
-      <li>
-        <p class="step-indicator__number step-indicator__active">1</p>
-        <div>
-          <p>Step 1</p>
-          <p>Your info</p>
-        </div>
-      </li>
-      <li>
-        <p class="step-indicator__number">2</p>
-        <div>
-          <p>Step 2</p>
-          <p>Select plan</p>
-        </div>
-      </li>
-      <li>
-        <p class="step-indicator__number">3</p>
-        <div>
-          <p>Step 3</p>
-          <p>Add-ons</p>
-        </div>
-      </li>
-      <li>
-        <p class="step-indicator__number">4</p>
-        <div>
-          <p>Step 4</p>
-          <p>Summary</p>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <!-- Sidebar end -->
-
   <form id="multi-step-form">
-    <div id="form__step-container">
+    <!-- Desktop Sidebar start -->
+    <div id="desktop-step-indicator">
+      <ul>
+        <li>
+          <p class="step-indicator__number step-indicator__active">1</p>
+          <div>
+            <p>Step 1</p>
+            <p>Your info</p>
+          </div>
+        </li>
+        <li>
+          <p class="step-indicator__number">2</p>
+          <div>
+            <p>Step 2</p>
+            <p>Select plan</p>
+          </div>
+        </li>
+        <li>
+          <p class="step-indicator__number">3</p>
+          <div>
+            <p>Step 3</p>
+            <p>Add-ons</p>
+          </div>
+        </li>
+        <li>
+          <p class="step-indicator__number">4</p>
+          <div>
+            <p>Step 4</p>
+            <p>Summary</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="form__step-wrapper">
       <!-- Step 1 start -->
       <div id="form__step-1" class="form__step">
         <h2 class="form__step-title">Personal info</h2>
@@ -202,14 +199,12 @@
           </p>
         </div>
       </div>
-    </div>
-
-    <!-- Form step and submit buttons -->
-    <!-- TODO make it so form buttons cant cover content on mobile devices if it gets too long. -->
-    <div id="form__buttons">
-      <button id="previous-step-button" type="button" class="button-neutral hidden">Go Back</button>
-      <button id="next-step-button" type="button" class="button-primary">Next Step</button>
-      <button id="submit-button" type="submit" class="button-secondary hidden">Confirm</button>
+      <!-- Form step and submit buttons -->
+      <div id="form__buttons">
+        <button id="previous-step-button" type="button" class="button-neutral hidden">Go Back</button>
+        <button id="next-step-button" type="button" class="button-primary">Next Step</button>
+        <button id="submit-button" type="submit" class="button-secondary hidden">Confirm</button>
+      </div>
     </div>
   </form>
 

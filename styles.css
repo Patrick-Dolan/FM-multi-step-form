@@ -26,9 +26,18 @@ body {
   font-family: 'Ubuntu', sans-serif;
   background-image: url("/assets/images/bg-sidebar-mobile.svg");
   background-repeat: no-repeat;
+  background-size: 100%;
   background-color: hsl(217, 100%, 97%);
+  /* TODO remove padding bottom via media query when on desktop */
   /* PADDING BOTTOM IS FOR MOBILE SO BUTTONS DON'T LET CONTENT HIDE BEHIND THEM */
   padding-bottom: 6em;
+}
+
+@media screen and (min-width: 785px) {
+  body {
+    background-image: none;
+    padding-bottom: 0;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -79,17 +88,48 @@ hr {
 
 /* Form Styles */
 
-#form__step-container {
+#multi-step-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   box-shadow: 0px 35px 50px -15px var(--shadow);
   width: 100%;
   background-color: var(--form-background);
   border-radius: .75rem;
 }
 
+@media screen and (min-width: 785px) {
+  #multi-step-form {
+    max-width: 900px;
+    margin: 3em auto;
+  }
+}
+
+#form__step-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (min-width: 785px) {
+  #form__step-wrapper {
+    min-height: 35.5em;
+  }
+}
+
 .form__step {
   max-width: 85%;
   margin: 0 auto;
   padding: 1.5em 0;
+}
+
+@media screen and (min-width: 785px) {
+  .form__step {
+    min-width: 75%;
+  }
 }
 
 .form__step-title {
@@ -100,6 +140,12 @@ hr {
   color: var(--text-neutral);
   font-size: 1.05rem;
   margin-top: .75em;
+}
+
+@media screen and (min-width: 785px) {
+  .form__step-paragraph {
+    margin-bottom: 2em;
+  }
 }
 
 #form__submission-complete {
@@ -120,6 +166,12 @@ hr {
   margin-bottom: .5em;
 }
 
+@media screen and (min-width: 785px) {
+  .form__group {
+    margin-bottom: 1em;
+  }
+}
+
 .form__group input {
   border: 1px solid var(--light-border);
   color: var(--primary-color);
@@ -127,6 +179,12 @@ hr {
   padding: .75rem .75rem;
   font-size: 1rem;
   font-weight: 700;
+}
+
+@media screen and (min-width: 785px) {
+  .form__group input {
+    height: 1.75em;
+  }
 }
 
 .form__group label {
@@ -154,12 +212,50 @@ hr {
 
 /* Form step indicator */
 
+#desktop-step-indicator {
+  display: none;
+  background-image: url("/assets/images/bg-sidebar-desktop.svg");
+  background-size: cover;
+  height: 30rem;
+  width: 40%;
+  margin: 0;
+  border-radius: .5rem;
+}
+
+#desktop-step-indicator ul {
+  margin-top: 2.25em;
+}
+
+#desktop-step-indicator ul li {
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (min-width: 785px){
+  #desktop-step-indicator {
+    display: flex;
+    justify-content: space-between;
+    margin: 1em 0 1em 1em;
+    padding: 0 2em;
+    /* Height and Width are the same as the background image */
+    height: 568px;
+    width: 274px;
+  }
+}
+
 #mobile-step-indicator {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 2em 0 2em 0;
   gap: .85em;
+}
+
+@media screen and (min-width: 785px){
+  #mobile-step-indicator {
+    display: none;
+  }
 }
 
 #desktop-step-indicator li {
@@ -287,6 +383,13 @@ hr {
   margin-bottom: .65em;
 }
 
+@media screen and (min-width: 785px) {
+  .form__addon-card {
+    padding: 1.5em 1em;
+    gap: 2em;
+  }
+}
+
 .form__addon-card:last-child {
   margin-bottom: 0;
 }
@@ -326,6 +429,16 @@ hr {
 .form__addon-card--details {
   color: var(--text-neutral);
   font-size: .8rem;
+}
+
+@media screen and (min-width: 785px){
+  .form__addon-card--title {
+    font-size: 1rem;
+  }
+  
+  .form__addon-card--details {
+    font-size: 1rem;
+  }
 }
 
 .form__addon-card--price {
@@ -426,6 +539,20 @@ hr {
   align-items: center;
   padding: 1rem;
   background: var(--form-background);
+}
+
+@media screen and (min-width: 785px) {
+  #form__buttons {
+    position: static;
+    box-shadow: none;
+    padding: 0;
+    display: flex;
+    min-width: 75%;
+    max-width: 85%;
+    margin: 0 auto;
+    margin-top: auto;
+    margin-bottom: 1em;
+  }
 }
 
 #next-step-button {
