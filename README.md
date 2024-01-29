@@ -6,7 +6,7 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
-  - [Screenshot](#screenshot)
+  - [Screenshots](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
@@ -30,20 +30,18 @@ Users should be able to:
   - The email address is not formatted correctly
   - A step is submitted, but no selection has been made
 
-### Screenshot
+### Screenshots
 
-Screenshot 1
 ![Inputs screenshot](./assets/screenshots/desktop-form-1.png)
 
-Screenshot 2
 ![Plans screenshot](./assets/screenshots/desktop-form-2.png)
 
 
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [GitHub Repo](https://github.com/Patrick-Dolan/FM-multi-step-form)
+- Live Site URL: [Live site](https://patrick-dolan.github.io/FM-multi-step-form/)
 
 ## My process
 
