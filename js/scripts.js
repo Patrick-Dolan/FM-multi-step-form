@@ -42,8 +42,11 @@ class Addon {
   }
 }
 
-function handleFormSubmit(event) {
+function handleFormSubmit(event, stepHandler) {
   event.preventDefault();
+
+  // Move form to next step
+  stepHandler.handleStepChange(1);
 
   const form = event.target;
   const formData = new FormData(form);
@@ -168,10 +171,10 @@ function createStepHandler() {
     backButton.style.display = currentStep === 0 ? "none" : "block";
 
     // Hide next button on last step and show on other steps
-    nextButton.style.display = currentStep === steps.length - 1 ? "none" : "block";
+    nextButton.style.display = currentStep === steps.length - 2 ? "none" : "block";
 
     // Show submit button on last step and hide on other steps
-    submitButton.style.display = currentStep === steps.length - 1 ? "block" : "none";
+    submitButton.style.display = currentStep === steps.length - 2 ? "block" : "none";
 
     // Update mobile step counter
     mobileStepCounterItems.forEach(item => item.classList.remove("step-indicator__active"));
@@ -184,7 +187,6 @@ function createStepHandler() {
 
     // Handle final form submission page
     if (currentStep === 4) {
-      console.log("Form submitted")
       mobileStepCounterItems.forEach(item => parseInt(item.innerHTML) === currentStep ? item.classList.add("step-indicator__active") : null);
       formButtons.style.display = "none";
     }
@@ -231,15 +233,17 @@ function createStepHandler() {
         // Find the error message element and set its inner text to the validation error message
         if (errorMessageElement) {
           errorMessageElement.innerText = getErrorMessage(input);
+          input.classList.add("input-error-border");
         }
       } else {
         // If input is valid, clear any previous error message
         if (errorMessageElement) {
           errorMessageElement.innerText = "";
+          input.classList.remove("input-error-border");
         }
       }
     });
-  
+
     return isValid;
   }
 
@@ -305,7 +309,7 @@ window.addEventListener("load", function() {
   const billingFrequencyHandler = createBillingFrequencyHandler();
 
   handleAddonStyleEventListeners();
-  document.getElementById("multi-step-form").addEventListener("submit", handleFormSubmit);
+  document.getElementById("multi-step-form").addEventListener("submit", (e) => handleFormSubmit(e, stepHandler));
   document.getElementById("next-step-button").addEventListener("click", () => stepHandler.handleStepChange(1));
   document.getElementById("previous-step-button").addEventListener("click", () => stepHandler.handleStepChange(-1));
   document.getElementById("form__plan-toggle").addEventListener("change", billingFrequencyHandler);
