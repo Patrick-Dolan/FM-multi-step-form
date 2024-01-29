@@ -73,7 +73,6 @@ function handleFormSubmit(event, stepHandler) {
     }
   }
 
-  // TODO set up UI function that can be called to move to form submission complete state
   console.log(formDataObject);
 }
 
@@ -301,8 +300,6 @@ function handleAddonStyleEventListeners() {
   })
 }
 
-// TODO add event listener that stops form submission on enter key press unless on last step
-
 // Wait till load to execute all code
 window.addEventListener("load", function() {
   const stepHandler = createStepHandler();
@@ -310,6 +307,7 @@ window.addEventListener("load", function() {
 
   handleAddonStyleEventListeners();
   document.getElementById("multi-step-form").addEventListener("submit", (e) => handleFormSubmit(e, stepHandler));
+  document.getElementById("multi-step-form").addEventListener("keydown", (e) => e.key === "Enter" ? e.preventDefault() : null);
   document.getElementById("next-step-button").addEventListener("click", () => stepHandler.handleStepChange(1));
   document.getElementById("previous-step-button").addEventListener("click", () => stepHandler.handleStepChange(-1));
   document.getElementById("form__plan-toggle").addEventListener("change", billingFrequencyHandler);
