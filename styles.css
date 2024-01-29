@@ -662,6 +662,11 @@ hr {
   min-width: 0;
 }
 
+#previous-step-button:hover,
+#previous-step-button:focus-visible {
+  color: var(--primary-color);
+}
+
 /* Icons */
 
 #thank-you-icon {
