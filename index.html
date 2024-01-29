@@ -59,7 +59,7 @@
     </div>
     <div id="form__step-wrapper">
       <!-- Step 1 start -->
-      <div id="form__step-1" class="form__step">
+      <div id="form__step-1" class="form__step hidden">
         <h2 class="form__step-title">Personal info</h2>
         <p class="form__step-paragraph">Please provide your name, email address, and phone number.</p>
         <div class="form__group">
@@ -86,36 +86,38 @@
         </div>
       </div>
       <!-- Step 2 -->
-      <div id="form__step-2" class="form__step hidden">
+      <div id="form__step-2" class="form__step">
         <h2 class="form__step-title">Select your plan</h2>
         <p class="form__step-paragraph">You have the option of monthly or yearly billing.</p>
-        <input id="plan1" class="form__plan-input" type="radio" name="plan" value="arcade" checked> 
-        <label for="plan1" class="form__plan-card">
-          <img src="./assets/images/icon-arcade.svg" alt="arcade icon">
-          <div>
-            <p class="form__plan-card--title">Arcade</p>
-            <p id="arcade-price" class="form__plan-card--price">$9/mo</p>
-            <p class="form__plan-card--free-months hidden">2 months free</p>
-          </div>
-        </label>
-        <input id="plan2" class="form__plan-input" type="radio" name="plan" value="advanced"> 
-        <label for="plan2" class="form__plan-card">
-          <img src="./assets/images/icon-advanced.svg" alt="arcade icon">
-          <div>
-            <p class="form__plan-card--title">Advanced</p>
-            <p id="advanced-price" class="form__plan-card--price">$12/mo</p>
-            <p class="form__plan-card--free-months hidden">2 months free</p>
-          </div>
-        </label>
-        <input id="plan3" class="form__plan-input" type="radio" name="plan" value="pro"> 
-        <label for="plan3" class="form__plan-card">
-          <img src="./assets/images/icon-pro.svg" alt="arcade icon">
-          <div>
-            <p class="form__plan-card--title">Pro</p>
-            <p id="pro-price" class="form__plan-card--price">$15/mo</p>
-            <p class="form__plan-card--free-months hidden">2 months free</p>
-          </div>
-        </label>
+        <div id="form__plan-cards">
+          <input id="plan1" class="form__plan-input" type="radio" name="plan" value="arcade" checked>
+          <label for="plan1" class="form__plan-card">
+            <img src="./assets/images/icon-arcade.svg" alt="arcade icon">
+            <div>
+              <p class="form__plan-card--title">Arcade</p>
+              <p id="arcade-price" class="form__plan-card--price">$9/mo</p>
+              <p class="form__plan-card--free-months hidden">2 months free</p>
+            </div>
+          </label>
+          <input id="plan2" class="form__plan-input" type="radio" name="plan" value="advanced">
+          <label for="plan2" class="form__plan-card">
+            <img src="./assets/images/icon-advanced.svg" alt="arcade icon">
+            <div>
+              <p class="form__plan-card--title">Advanced</p>
+              <p id="advanced-price" class="form__plan-card--price">$12/mo</p>
+              <p class="form__plan-card--free-months hidden">2 months free</p>
+            </div>
+          </label>
+          <input id="plan3" class="form__plan-input" type="radio" name="plan" value="pro">
+          <label for="plan3" class="form__plan-card">
+            <img src="./assets/images/icon-pro.svg" alt="arcade icon">
+            <div>
+              <p class="form__plan-card--title">Pro</p>
+              <p id="pro-price" class="form__plan-card--price">$15/mo</p>
+              <p class="form__plan-card--free-months hidden">2 months free</p>
+            </div>
+          </label>
+        </div>
         <label id="form__plan-toggle-label" for="form__plan-toggle">
           <span id="monthly-plan" class="toggle-labels form__plan-toggle--active">Monthly</span>
           <input id="form__plan-toggle" name="billingFrequency" type="checkbox" value="yearly">

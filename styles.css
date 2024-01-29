@@ -314,6 +314,16 @@ hr {
 
 /* Form plan styles */
 
+@media screen and (min-width: 785px) {
+  #form__plan-cards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+}
+
 .form__plan-card {
   display: flex;
   align-items: start;
@@ -323,6 +333,16 @@ hr {
   padding: 1em 1em;
   margin-bottom: .5em;
   cursor: pointer;
+}
+
+@media screen and (min-width: 785px) {
+  .form__plan-card {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 3em;
+    flex-basis: 4em;
+  }
 }
 
 .form__plan-card p {
